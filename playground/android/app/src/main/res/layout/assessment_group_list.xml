@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.prepleaf.TestList.Views.CustomTabLayout
+        android:id="@+id/assessment_custom_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="top"
+        >
+        <com.google.android.material.chip.ChipGroup
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            app:singleLine="true"
+            app:singleSelection="true"
+            app:chipSpacing="12dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:id="@+id/linear_layout"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </com.prepleaf.TestList.Views.CustomTabLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/assessment_tabs_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </androidx.viewpager.widget.ViewPager>
+</LinearLayout>

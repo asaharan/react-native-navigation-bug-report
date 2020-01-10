@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowBackground">@color/backgroundColor</item>
     </style>
 
@@ -9,4 +9,10 @@
     and when transitioning between a destination drawn under the StatusBar to
     a destination drawn behind it-->
     <item name="backgroundColor" type="color">#e8e8e8</item>
+    <item name="colorPrimary" type="color">#4386f6</item>
+    <item name="primaryLightBackground" type="color">#454386F6</item>
+    <color name="textColor">#313131</color>
+    <color name="colorAccent">#F64386</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="customTabLayoutChipStroke">#777</color>
 </resources>

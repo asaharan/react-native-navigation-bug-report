@@ -11,6 +11,8 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 
+import com.prepleaf.TestList.TestListPackage;
+
 public class MainApplication extends NavigationApplication {
 
     @Override
@@ -39,6 +41,7 @@ public class MainApplication extends NavigationApplication {
     public List<ReactPackage> createAdditionalReactPackages() {
         List<ReactPackage> packages = new ArrayList<>();
         packages.add(new RNViewOverflowPackage());
+        packages.add(new TestListPackage());
         return packages;
     }
 }

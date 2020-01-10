@@ -1,13 +1,13 @@
 // @ts-check
-const { Navigation } = require('react-native-navigation');
-const { registerScreens } = require('./screens');
-const { Platform } = require('react-native');
-const { setDefaultOptions } = require('./commons/Options')
-const testIDs = require('./testIDs');
-const Screens = require('./screens/Screens');
+const { Navigation } = require("react-native-navigation");
+const { registerScreens } = require("./screens");
+const { Platform } = require("react-native");
+const { setDefaultOptions } = require("./commons/Options");
+const testIDs = require("./testIDs");
+const Screens = require("./screens/Screens");
 
-if (Platform.OS === 'android') {
-  alert = (title) => {
+if (Platform.OS === "android") {
+  alert = title => {
     Navigation.showOverlay({
       component: {
         name: Screens.Alert,
@@ -16,7 +16,7 @@ if (Platform.OS === 'android') {
         },
         options: {
           layout: {
-            componentBackgroundColor: 'transparent'
+            componentBackgroundColor: "transparent"
           },
           overlay: {
             interceptTouchOutside: true
@@ -40,16 +40,42 @@ function start() {
               stack: {
                 children: [
                   {
-                    component: {
-                      name: 'Layouts'
+                    topTabs: {
+                      children: [
+                        {
+                          stack: {
+                            children: [
+                              {
+                                component: {
+                                  name: "Layouts"
+                                }
+                              }
+                            ],
+                            options: { topTab: { title: "Tab1" } }
+                          }
+                        },
+                        {
+                          stack: {
+                            children: [
+                              {
+                                component: {
+                                  name: "Layouts"
+                                }
+                              }
+                            ],
+                            options: { topTab: { title: "Tab2" } }
+                          }
+                        }
+                      ]
                     }
                   }
                 ],
                 options: {
+                  topBar: { height: 100 },
                   bottomTab: {
-                    text: 'Layouts',
-                    icon: require('../img/layouts.png'),
-                    selectedIcon: require('../img/layouts_selected.png'),
+                    text: "Layouts",
+                    icon: require("../img/layouts.png"),
+                    selectedIcon: require("../img/layouts_selected.png"),
                     testID: testIDs.LAYOUTS_TAB
                   }
                 }
@@ -60,20 +86,20 @@ function start() {
                 children: [
                   {
                     component: {
-                      name: 'Options'
+                      name: "Options"
                     }
                   }
                 ],
                 options: {
                   topBar: {
                     title: {
-                      text: 'Default Title'
+                      text: "Default Title"
                     }
                   },
                   bottomTab: {
-                    text: 'Options',
-                    icon: require('../img/options.png'),
-                    selectedIcon: require('../img/options_selected.png'),
+                    text: "Options",
+                    icon: require("../img/options.png"),
+                    selectedIcon: require("../img/options_selected.png"),
                     testID: testIDs.OPTIONS_TAB
                   }
                 }
@@ -84,7 +110,7 @@ function start() {
                 children: [
                   {
                     component: {
-                      name: 'Navigation'
+                      name: "Navigation"
                     }
                   }
                 ]

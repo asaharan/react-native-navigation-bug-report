@@ -1,16 +1,16 @@
-const React = require('react');
-const Root = require('../components/Root');
-const Button = require('../components/Button')
+const React = require("react");
+const Root = require("../components/Root");
+const Button = require("../components/Button");
 const {
   WELCOME_SCREEN_HEADER,
   STACK_BTN,
   BOTTOM_TABS_BTN,
   BOTTOM_TABS,
   SIDE_MENU_BTN
-} = require('../testIDs');
-const Screens = require('./Screens');
-const Navigation = require('../services/Navigation');
-const {stack} = require('../commons/Layouts');
+} = require("../testIDs");
+const Screens = require("./Screens");
+const Navigation = require("../services/Navigation");
+const { stack } = require("../commons/Layouts");
 
 class LayoutsScreen extends React.Component {
   static options() {
@@ -18,8 +18,13 @@ class LayoutsScreen extends React.Component {
       topBar: {
         testID: WELCOME_SCREEN_HEADER,
         title: {
-          text: 'React Native Navigation'
-        }
+          text: "React Native Navigation"
+        },
+        rightButtons: [
+          { text: "Option 1 long text", icon: { uri: "ic_android" } },
+          { text: "Option 2 long text", icon: { uri: "ic_android" } },
+          { text: "Option 3 lo", icon: { uri: "ic_android" } }
+        ]
       }
     };
   }
@@ -27,101 +32,113 @@ class LayoutsScreen extends React.Component {
   render() {
     return (
       <Root componentId={this.props.componentId}>
-        <Button label='Stack' testID={STACK_BTN} onPress={this.stack} />
-        <Button label='BottomTabs' testID={BOTTOM_TABS_BTN} onPress={this.bottomTabs} />
-        <Button label='SideMenu' testID={SIDE_MENU_BTN} onPress={this.sideMenu} />
+        <Button label="Stack" testID={STACK_BTN} onPress={this.stack} />
+        <Button
+          label="BottomTabs"
+          testID={BOTTOM_TABS_BTN}
+          onPress={this.bottomTabs}
+        />
+        <Button
+          label="SideMenu"
+          testID={SIDE_MENU_BTN}
+          onPress={this.sideMenu}
+        />
       </Root>
     );
   }
 
   stack = () => Navigation.showModal(Screens.Stack);
 
-  bottomTabs = () => Navigation.showModal({
-    bottomTabs: {
-      children: [
-        stack(Screens.FirstBottomTabsScreen),
-        stack({
-          component: {
-            name: Screens.SecondBottomTabsScreen
+  bottomTabs = () =>
+    Navigation.showModal({
+      bottomTabs: {
+        children: [
+          stack(Screens.FirstBottomTabsScreen),
+          stack(
+            {
+              component: {
+                name: Screens.SecondBottomTabsScreen
+              }
+            },
+            "SecondTab"
+          )
+        ],
+        options: {
+          bottomTabs: {
+            testID: BOTTOM_TABS
           }
-        }, 'SecondTab'
-        )
-      ],
-      options: {
-        bottomTabs: {
-          testID: BOTTOM_TABS
         }
       }
-    }
-  });
+    });
 
-  sideMenu = () => Navigation.showModal({
-    sideMenu: {
-      left: {
-        component: {
-          id: 'left',
-          name: Screens.SideMenuLeft
-        }
-      },
-      center: stack({
+  sideMenu = () =>
+    Navigation.showModal({
+      sideMenu: {
+        left: {
           component: {
-            id: 'SideMenuCenter',
+            id: "left",
+            name: Screens.SideMenuLeft
+          }
+        },
+        center: stack({
+          component: {
+            id: "SideMenuCenter",
             name: Screens.SideMenuCenter
           }
         }),
-      right: {
-        component: {
-          id: 'right',
-          name: Screens.SideMenuRight
+        right: {
+          component: {
+            id: "right",
+            name: Screens.SideMenuRight
+          }
         }
       }
-    }
-  });
+    });
 
   onClickSplitView = () => {
     Navigation.setRoot({
       root: {
         splitView: {
-          id: 'SPLITVIEW_ID',
+          id: "SPLITVIEW_ID",
           master: {
             stack: {
-              id: 'MASTER_ID',
+              id: "MASTER_ID",
               children: [
                 {
                   component: {
-                    name: 'navigation.playground.WelcomeScreen'
-                  },
-                },
+                    name: "navigation.playground.WelcomeScreen"
+                  }
+                }
               ]
-            },
+            }
           },
           detail: {
             stack: {
-              id: 'DETAILS_ID',
+              id: "DETAILS_ID",
               children: [
                 {
                   component: {
-                    name: 'navigation.playground.WelcomeScreen'
-                  },
-                },
+                    name: "navigation.playground.WelcomeScreen"
+                  }
+                }
               ]
             }
           },
           options: {
-            displayMode: 'auto',
-            primaryEdge: 'leading',
+            displayMode: "auto",
+            primaryEdge: "leading",
             minWidth: 150,
-            maxWidth: 300,
-          },
-        },
-      },
+            maxWidth: 300
+          }
+        }
+      }
     });
-  }
+  };
 
   onClickSearchBar = () => {
     Navigation.push(this.props.componentId, {
       component: {
-        name: 'navigation.playground.SearchControllerScreen'
+        name: "navigation.playground.SearchControllerScreen"
       }
     });
   };
